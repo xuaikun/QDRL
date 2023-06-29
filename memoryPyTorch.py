@@ -15,7 +15,6 @@ from GA_code import GA
 
 print(torch.__version__)
 
-# 以下公式来自论文：Deep Reinforcement Learning for Online Offloading in Wireless Powered Mobile-Edge Computing Networks
 # 用于存储DNN网络
 class MemoryDNN:
     def __init__(
@@ -174,11 +173,11 @@ class MemoryDNN:
     def knm(self, m, k = 1):
         # 返回k个保序的卸载决策
         m_list = []
-        # 根据公式 (8)生成第一个卸载决策,Deep Reinforcement Learning for Online Offloading in Wireless Powered Mobile-Edge Computing Networks
+        # 根据公式 (8)生成第一个卸载决策
         m_list.append(1*(m>0.5))
 
         if k > 1:
-            # 根据公式 (9)生成剩余的K-1个卸载决策，Deep Reinforcement Learning for Online Offloading in Wireless Powered Mobile-Edge Computing Networks
+            # 根据公式 (9)生成剩余的K-1个卸载决策，
             m_abs = abs(m-0.5)
             idx_list = np.argsort(m_abs)[:k-1]
             for i in range(k-1):
