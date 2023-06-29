@@ -1,31 +1,3 @@
-#  #################################################################
-#  文件的代码是针对以下论文复现的： 
-#  Deep Reinforcement Learning for Online Ofﬂoading in Wireless Powered Mobile-Edge Computing Networks 
-#  
-#  该文件包含 DROO 的主要代码。 它加载保存在 ./data/data_#.mat 中的训练样本，将样本分成两部分（训练和测试数据分别占 80% 和 20%），用训练样本训练 DNN，最后用测试样本测试DNN。
-#  输入在: ./data/data_#.mat
-#    数据样本input_h是根据参考文献[2]的公式（37）介绍的方法生成的，论文作者公开了原始处理数据，后期实验可以直接参照使用。
-#    每个 ./data/data_#.mat 中保存了 30,000 个样本，其中 # 是用户编号。 每个数据样本包括
-#  ---------------------------------------------------------------------------------
-#  |       wireless channel gain （无线通道增益，输入）      |    input_h            |
-#  ---------------------------------------------------------------------------------
-#  |       computing mode selection （卸载模式选择）         |    output_mode        |
-#  ---------------------------------------------------------------------------------
-#  |       energy broadcasting parameter（充电时间百分比）   |    output_a           |
-#  ---------------------------------------------------------------------------------
-#  |     transmit time of wireless device （卸载时间百分比） |    output_tau         |
-#  ---------------------------------------------------------------------------------
-#  |      weighted sum computation rate  （加权计算率）      |    output_obj         |
-#  ---------------------------------------------------------------------------------
-#
-#
-#  参考文献:
-#  [1] "Deep Reinforcement Learning for Online Offloading in Wireless Powered Mobile-Edge Computing Networks,"
-#  [2]  “Computation rate maximization for wireless powered mobile-edge computing with binary computation ofﬂoading,”
-#
-#  #################################################################
-
-
 from re import T
 import scipy.io as sio                     # import scipy.io for .mat file I/
 import numpy as np                         # import numpy
