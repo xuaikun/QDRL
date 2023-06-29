@@ -30,8 +30,6 @@ def plot_gain( gain_his): # 画图
     plt.show()
 
 def alpha_Mybisection(h, M, Q, weights, V, dataA, Local_A, Edge_A, w_fac, alpha_tau):
-    # the bisection algorithm proposed by Suzhi BI
-    # average time to find the optimal: 0.012535839796066284 s
 
     # parameters and equations
     # 公式1的参数解释
@@ -196,8 +194,7 @@ def alpha_Mycd_method(h, Q, weights, V, dataA, Local_A, Edge_A, w_fac, alpha_tau
     return gain0, a, Tj, _, M
 
 def Mybisection(h, M, Q, weights, V, dataA, Local_A, Edge_A, w_fac):
-    # the bisection algorithm proposed by Suzhi BI
-    # average time to find the optimal: 0.012535839796066284 s
+
 
     # parameters and equations
     # 公式1的参数解释
@@ -325,7 +322,7 @@ def Mybisection(h, M, Q, weights, V, dataA, Local_A, Edge_A, w_fac):
         '''
         return (sum1+sum2)/d_fact - V*w_fac*sum(error) # 加了个惩罚因子
 
-    def phi(v, j): # 求和公式对tua求导可以得到，tua_j/a # 证明来自：Computation Rate Maximization for Wireless Powered Mobile-Edge Computing with Binary Computation Offloading，附录A
+    def phi(v, j): # 求和公式对tua求导可以得到，tua_j/a 
         # return 1/(-1-1/(lambertw(-1/(np.exp(1 + v/wj[j]/epsilon))).real))
         return 1/(-1-1/(lambertw(-1/(np.exp(1 + v/aj[j]/epsilon))).real))
 
@@ -336,7 +333,7 @@ def Mybisection(h, M, Q, weights, V, dataA, Local_A, Edge_A, w_fac):
 
         return 1/(1 + p1 * eta2)
 
-    def Q(v):  # 求和公式对a的求导，证明来自Computation Rate Maximization for Wireless Powered Mobile-Edge Computing with Binary Computation Offloading，附录B
+    def Q(v):  # 求和公式对a的求导，
         # print("wi*eta1*(hi/ki)**(1.0/3) =", ai*wi*eta1*(hi/ki)**(1.0/3))
         # np,show()
         # sum1 = sum(wi*eta1*(hi/ki)**(1.0/3))*p1(v)**(-2/3)/3
@@ -403,7 +400,7 @@ def Mycd_method(h, Q, weights, V, dataA, Local_A, Edge_A, w_fac, AR):
     return gain0, M0
 
 # 函数中定义的公式可以在以下论文中查到对应的出处：需要一定数学基础能力
-# “Computation rate maximization for wireless powered mobile-edge computing with binary computation ofﬂoading,” 
+
 def bisection(h, M, weights=[]): # 用二分查找实现计算资源分配
     # WD表述无线设备 Wireless Device
 
@@ -445,8 +442,8 @@ def bisection(h, M, weights=[]): # 用二分查找实现计算资源分配
             sum2+=wj[i]*epsilon*x[i+1]*np.log(1+eta2*hj[i]**2*x[0]/x[i+1]) # 公式3，计算边缘计算的计算率
         return sum1+sum2
     
-    # 公式（17），推导在附录A
-    def phi(v, j): # 求和公式对tua求导可以得到，tua_j/a # 证明来自：Computation Rate Maximization for Wireless Powered Mobile-Edge Computing with Binary Computation Offloading，附录A
+    # 公式（17）
+    def phi(v, j): # 求和公式对tua求导可以得到，tua_j/a # 
         return 1/(-1-1/(lambertw(-1/(np.exp(1 + v/wj[j]/epsilon))).real))
 
     # 公式（18）
@@ -458,7 +455,7 @@ def bisection(h, M, weights=[]): # 用二分查找实现计算资源分配
         return 1/(1 + p1 * eta2)
 
     # 公式（19），推导在附录B
-    def Q(v):  # 求和公式对a的求导，证明来自Computation Rate Maximization for Wireless Powered Mobile-Edge Computing with Binary Computation Offloading，附录B
+    def Q(v):  # 求和公式对a的求导
         sum1 = sum(wi*eta1*(hi/ki)**(1.0/3))*p1(v)**(-2/3)/3
         sum2 = 0
         for j in range(len(M1)):
@@ -487,8 +484,6 @@ def bisection(h, M, weights=[]): # 用二分查找实现计算资源分配
         
     return sum_rate(x), x[0], x[1:] # 加权计算率，充电时间占比，WD卸载时间占比
 
-
-# cd_method方案来自论文“Computation rate maximization for wireless powered mobile-edge computing with binary computation ofﬂoading,” 
 def cd_method(h):
     N = len(h)
     M0 = np.random.randint(2,size = N) # 随机生成卸载决策
