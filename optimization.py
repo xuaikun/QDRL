@@ -335,7 +335,7 @@ def cd_method(h):
         g_max = max(g_list) # 
         if g_max > gain0: 
             gain0 = g_max #
-            M0 = M_list[g_list.index(g_max)] # 更新最大增益对应的卸载决策
+            M0 = M_list[g_list.index(g_max)]
         else:
             break
-    return gain0, M0 # 最大增益及其最佳卸载决策
+    return gain0, M0 
